@@ -16,4 +16,4 @@
 module purge
 module load python/3.5.2   intel/17.0.4
 
-srun python linearizedOrderingGenerator.py 8_2 8_r.txt
+srun python linearizedOrderingGenerator.py 8_2 8_r.txt restrictions31.json

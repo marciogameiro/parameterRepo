@@ -195,7 +195,7 @@ def indexlist(index,pattern):
 # pattern = [4,2,2]
 # index = 4
 
-indexlist(index, pattern)
+# indexlist(index, pattern)
 
 # sample = [[X_0, X_1, X_2,X_3],[Y_0,Y_1],[Z_0,Z_1]]
 def evalutionord(pattern, sample):
@@ -274,7 +274,10 @@ def run5(logic, restrictedOrdering):
     # get basis matrix not that useful
     # also delta 1 < delta 2
     extra_matrix = extraRelationGenerator(p_matrix,restrictedOrdering)
-    extra_matrix = np.vstack([extra_matrix, np.array([[0,0,0,0,0,0,0,0,0,1,-1,0]])])
+    #extra_matrix = np.vstack([extra_matrix, np.array([[0,1,-1,0,0,0,0,0,0,0],[-1,1,1,-1,0,0,0,0,0,0]])])
+    tt = [[-1, 0, 0, 1, 1, 0, 0, -1, 0, 0], [-1, 0, 1, 0, 0, 1, 0, -1, 0, 0], [-1, 0, 1, 0, 1, 0, -1, 0, 0, 0], [-1, 1, 0, 0, 0, 0, 1, -1, 0, 0], [-1, 1, 0, 0, 1, -1, 0, 0, 0, 0], [-1, 1, 1, -1, 0, 0, 0, 0, 0, 0], [0, -1, 0, 1, 0, 1, 0, -1, 0, 0], [0, 0, -1, 1, 0, 0, 1, -1, 0, 0], [0, 0, 0, 0, -1, 1, 1, -1, 0, 0]]
+    tt = np.array(tt)
+    extra_matrix = np.vstack([extra_matrix, tt])
     basis_matrix = np.concatenate([basis_matrix,extra_matrix],axis = 0)
     # permutations
     permutations  = get_permutations(n)

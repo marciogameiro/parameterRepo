@@ -24,4 +24,4 @@ if __name__ == "__main__":
     #run5(logic,pres[file_no])
     #print(pres[file_no])
     for i in range(len(pres)):
-        run5("8_2",pres[i])
+        run5("8_2",pres[i],extraRestrictionFile)

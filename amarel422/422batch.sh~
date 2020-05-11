@@ -24,5 +24,5 @@ module purge
 module load python/3.5.2   intel/17.0.4
 
 # srun python linearizedOrderingGenerator.py 4_2_2_2 $SLURM_ARRAY_TASK_ID 
-srun python linearizedOrderingGenerator.py 4_2_2 4_2_r.txt restrictions211.json
+srun python linearizedOrderingGenerator.py 4_2_2 1 
 

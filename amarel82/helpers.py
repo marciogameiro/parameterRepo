@@ -254,7 +254,7 @@ def extraRelationGenerator(p_matrix, ptotalordering):
         ret.append(p_matrix[ptotalordering[i]] - p_matrix[ptotalordering[i-1]])
     return np.vstack(ret)
 
-def run5(logic, restrictedOrdering):
+def run5(logic, restrictedOrdering,extraFile):
     #count = 0
     ret = set([])
     file_name = '{} {}.dat'.format(logic,restrictedOrdering)
@@ -275,8 +275,10 @@ def run5(logic, restrictedOrdering):
     # also delta 1 < delta 2
     extra_matrix = extraRelationGenerator(p_matrix,restrictedOrdering)
     #extra_matrix = np.vstack([extra_matrix, np.array([[0,1,-1,0,0,0,0,0,0,0],[-1,1,1,-1,0,0,0,0,0,0]])])
-    tt = [[-1, 0, 0, 1, 1, 0, 0, -1, 0, 0], [-1, 0, 1, 0, 0, 1, 0, -1, 0, 0], [-1, 0, 1, 0, 1, 0, -1, 0, 0, 0], [-1, 1, 0, 0, 0, 0, 1, -1, 0, 0], [-1, 1, 0, 0, 1, -1, 0, 0, 0, 0], [-1, 1, 1, -1, 0, 0, 0, 0, 0, 0], [0, -1, 0, 1, 0, 1, 0, -1, 0, 0], [0, 0, -1, 1, 0, 0, 1, -1, 0, 0], [0, 0, 0, 0, -1, 1, 1, -1, 0, 0]]
-    tt = np.array(tt)
+    #tt = [[-1, 0, 0, 1, 1, 0, 0, -1, 0, 0], [-1, 0, 1, 0, 0, 1, 0, -1, 0, 0], [-1, 0, 1, 0, 1, 0, -1, 0, 0, 0], [-1, 1, 0, 0, 0, 0, 1, -1, 0, 0], [-1, 1, 0, 0, 1, -1, 0, 0, 0, 0], [-1, 1, 1, -1, 0, 0, 0, 0, 0, 0], [0, -1, 0, 1, 0, 1, 0, -1, 0, 0], [0, 0, -1, 1, 0, 0, 1, -1, 0, 0], [0, 0, 0, 0, -1, 1, 1, -1, 0, 0]]
+    #tt = np.array(tt)
+    with open(extraFile,'r') as file:
+        tt = np.array(json.load(file))
     extra_matrix = np.vstack([extra_matrix, tt])
     basis_matrix = np.concatenate([basis_matrix,extra_matrix],axis = 0)
     # permutations
